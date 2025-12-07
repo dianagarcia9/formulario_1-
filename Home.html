@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Seoul Elan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Lexend+Giga&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    font-family: 'Lexend Giga', sans-serif; /* fuente para el contenido */
+    margin: 0;
+    background: #fff6fa;
+    color: #4e2e3f;
+}
+h1, h2 {
+    text-align: center;
+    font-family: 'Quintessential', serif; /* fuente para títulos */
+}
+
+header {
+    background: #ff8ec7;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+nav a {
+    margin: 0 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+.header-right a {
+    margin-left: 20px;
+    background: white;
+    color: #ff62b3;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.header-right a:hover {
+    background: #ffe6f2;
+}
+section {
+    display: none;
+    padding: 40px;
+}
+.active {
+    display: block;
+}
+.hero {
+    background: #ffd1e8;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.historia {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    color: #503345;
+    font-size: 17px;
+    line-height: 1.6;
+}
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 25px;
+}
+.producto {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px #ffd0e5;
+}
+.producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.btn-agregar {
+    background: #ff74bc;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+form {
+    max-width: 450px;
+    margin: auto;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ffa8d6;
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.carrito-item {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-eliminar {
+    background: #ff4d94;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-pago {
+    margin-top: 20px;
+    background: #ff74bc;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 25px;
+    display: inline-block;
+    cursor: pointer;
+}
+footer {
+    margin-top: 60px;
+    text-align: center;
+    background: #ff8ec7;
+    color: white;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">SEOUL ELAN</div>
+    <nav>
+        <a href="#" onclick="show('inicio')">Inicio</a>
+    </nav>
+    <div class="header-right">
+        <a href="#" onclick="show('registro')">Registro</a>
+        <a href="#" onclick="show('login')">Iniciar sesión</a>
+        <a href="#" onclick="show('carrito')">Carrito (<span id="contador">0</span>)</a>
+    </div>
+</header>
+
+<section id="inicio" class="active">
+    <div class="hero">
+        <h1>Nuestra Historia</h1>
+        <p class="historia">
+            Seoul Elyan nació del amor por la estética coreana y el deseo de traer productos elegantes,
+            delicados y funcionales a quienes buscan elevar su rutina de belleza.  
+            Creemos en la autenticidad, el cuidado personal y el encanto visual que define la esencia K-Beauty.
+        </p>
+    </div>
+
+    <h2 class="subinicio">Productos Destacados</h2>
+
+    <div class="productos">
+
+        
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-blush/34493780885639.webp"><h3>Rubor líquido Soft Pinch</h3><p>$394</p><div class="btn-agregar" onclick="agregar('Rubor líquido Soft Pinch',394)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-foundation/40242055676039.webp"><h3>Base de maquillaje ligera Liquid Touch</h3><p>$573</p><div class="btn-agregar" onclick="agregar('Base de maquillaje ligera Liquid Touch',573)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-bronzer/40385281949831.webp"><h3>Bronceador en barra sin esfuerzo Warm Wishes</h3><p>$441</p><div class="btn-agregar" onclick="agregar('Bronceador en barra sin esfuerzo Warm Wishes',441)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-setting-spray/34472529002631.jpg"><h3>Bruma 4 en 1 Always an Optimist</h3><p>$475</p><div class="btn-agregar" onclick="agregar('Bruma 4 en 1 Always an Optimist',475)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-contour/42181696979079.webp"><h3>Contorno líquido Soft Pinch</h3><p>$430</p><div class="btn-agregar" onclick="agregar('Contorno líquido Soft Pinch',430)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-concealer/40242002460807.webp"><h3>Corrector iluminador Liquid Touch</h3><p>$378</p><div class="btn-agregar" onclick="agregar('Corrector iluminador Liquid Touch',378)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-tinted-moisturizer/39775687016583.webp"><h3>Humectante con color Positive Light, protector solar de amplio espectro FPS 20</h3><p>$473</p><div class="btn-agregar" onclick="agregar('Humectante con color Positive Light, protector solar de amplio espectro FPS 20',473)">Agregar</div></div>
+
+        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-highlighter/40253134864519.webp"><h3>Iluminador Positive Light Silky Touch</h3><p>$425</p><div class="btn-agregar" onclick="agregar('Iluminador Positive Light Silky Touch',425)">Agregar</div></div>
+
+
+    </div>
+</section>
+
+<section id="registro">
+    <h1>Registro</h1>
+    <form onsubmit="event.preventDefault(); alert('Registro exitoso');">
+        <input type="text" placeholder="Nombre(s)">
+        <input type="text" placeholder="Apellido paterno">
+        <input type="text" placeholder="Apellido materno">
+        <input type="text" placeholder="Pronombre/s">
+        <label>Fecha de nacimiento</label>
+        <input type="date">
+        <input type="email" placeholder="Correo electrónico">
+        <input type="email" placeholder="Confirmar correo">
+        <input type="password" placeholder="Contraseña">
+        <input type="password" placeholder="Confirmar contraseña">
+        <div class="checkbox-container"><input type="checkbox"><label>Deseo recibir promociones</label></div>
+        <div class="checkbox-container"><input type="checkbox"><label>Acepto términos y condiciones</label></div>
+        <div class="checkbox-container"><input type="checkbox"><label>Acepto políticas de privacidad</label></div>
+        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
+    </form>
+</section>
+
+<section id="login">
+    <h1>Iniciar sesión</h1>
+    <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');">
+        <input type="email" placeholder="Correo electrónico">
+        <input type="password" placeholder="Contraseña">
+        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Ingresar</button>
+    </form>
+</section>
+
+<section id="carrito">
+    <h1>Carrito</h1>
+    <div id="lista-carrito"></div>
+    <h2>Total: $<span id="total">0</span></h2>
+    <div class="btn-pago" onclick="show('pedido')">Ir a pagar</div>
+</section>
+
+<section id="pedido">
+    <h1>Continuar Pedido</h1>
+    <form onsubmit="event.preventDefault(); show('final');">
+        <label>Fecha de entrega</label>
+        <input type="date">
+        <label>Hora</label>
+        <input type="time">
+        <label>Domicilio Completo</label>
+        <input type="text">
+        <label>Entre qué calles</label>
+        <input type="text">
+        <label>Instrucciones o comentarios</label>
+        <textarea></textarea>
+        <div class="checkbox-container"><input type="checkbox"><label>Confirmo que la información es correcta</label></div>
+        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Finalizar compra</button>
+    </form>
+</section>
+
+<section id="final">
+    <h1>Pedido completado</h1>
+    <p style="text-align:center;font-size:18px;">Gracias por tu compra</p>
+</section>
+
+<footer>
+    © 2025 Seoul Elan. Todos los derechos reservados.
+</footer>
+
+<script>
+let carrito = [];
+
+function show(s){
+    document.querySelectorAll('section').forEach(sec=>sec.classList.remove('active'));
+    document.getElementById(s).classList.add('active');
+}
+
+function agregar(nombre,precio){
+    carrito.push({nombre,precio});
+    document.getElementById('contador').textContent = carrito.length;
+    renderCarrito();
+}
+
+function renderCarrito(){
+    let cont=document.getElementById('lista-carrito');
+    cont.innerHTML='';
+    let total=0;
+
+    carrito.forEach((i,x)=>{
+        total+=i.precio;
+        cont.innerHTML += 
+        `<div class='carrito-item'>
+            <div>${i.nombre} – $${i.precio}</div>
+            <div class='btn-eliminar' onclick='eliminar(${x})'>Eliminar</div>
+        </div>`;
+    });
+
+    document.getElementById('total').textContent = total;
+}
+
+function eliminar(i){
+    carrito.splice(i,1);
+    document.getElementById('contador').textContent = carrito.length;
+    renderCarrito();
+}
+</script>
+
+</body>
+</html>
