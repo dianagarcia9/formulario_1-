@@ -212,7 +212,7 @@ footer {
 <section id="registro">
     <h1>Registro</h1>
 
-    <!-- FORMULARIO DE REGISTRO: usa los names EXACTOS que están en tu hoja -->
+    
     <form id="registroForm">
 
         <div>
@@ -251,7 +251,7 @@ footer {
 
 <section id="login">
     <h1>Iniciar sesión</h1>
-    <!-- FORMULARIO DE LOGIN (igual que tenías) -->
+    
     <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');" action="/procesar-login" method="POST">
         <div>
             <label for="login_email">Correo electrónico:</label>
@@ -276,7 +276,7 @@ footer {
 
 <section id="pedido">
     <h1>Continuar Pedido</h1>
-    <!-- FORMULARIO DE PEDIDO (igual que tenías) -->
+   
     <form onsubmit="event.preventDefault(); show('final');" action="/procesar-pedido" method="POST">
         <label for="pedido_fecha">Fecha de entrega</label>
         <input type="date" id="pedido_fecha" name="fecha_entrega" required>
@@ -303,7 +303,6 @@ footer {
 </footer>
 
 <script>
-/* ---------- Carrito y navegación (tu código original) ---------- */
 let carrito = [];
 
 function show(s){
@@ -342,9 +341,11 @@ function eliminar(i){
 
 /* ---------- Fetch funcional para enviar formulario a tu Apps Script ---------- */
 /* Reemplaza la URL por la tuya si es diferente (yo usé la que encontraste en tu archivo). */
-(function(){
-    const registroForm = document.getElementById('registroForm');
-    if (!registroForm) return;
+fetch("https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec", {
+  method: "POST",
+  body: datosFormulario
+})
+
 
     registroForm.addEventListener('submit', async function(e){
         e.preventDefault();
