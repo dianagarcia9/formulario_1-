@@ -10,14 +10,15 @@
     <style>
         /* ===== Estilos generales ===== */
         body {
-            font-family: 'Lexend Giga', sans-serif; /* fuente para el contenido */
+            font-family: 'Lexend Giga', sans-serif;
             margin: 0;
             background: #fff6fa;
             color: #4e2e3f;
         }
+
         h1, h2 {
             text-align: center;
-            font-family: 'Quintessential', serif; /* fuente para títulos */
+            font-family: 'Quintessential', serif;
         }
 
         header {
@@ -28,11 +29,13 @@
             justify-content: space-between;
             align-items: center;
         }
+
         header .logo {
             font-size: 22px;
             font-weight: bold;
             letter-spacing: 1px;
         }
+
         nav a {
             margin: 0 20px;
             color: white;
@@ -40,9 +43,11 @@
             font-weight: 600;
             font-size: 16px;
         }
+
         nav a:hover {
             text-decoration: underline;
         }
+
         .header-right a {
             margin-left: 20px;
             background: white;
@@ -52,6 +57,7 @@
             text-decoration: none;
             font-weight: bold;
         }
+
         .header-right a:hover {
             background: #ffe6f2;
         }
@@ -60,6 +66,7 @@
             display: none;
             padding: 40px;
         }
+
         .active {
             display: block;
         }
@@ -71,6 +78,7 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
         .historia {
             max-width: 900px;
             margin: auto;
@@ -82,9 +90,10 @@
 
         .productos {
             display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 25px;
         }
+
         .producto {
             background: white;
             border-radius: 18px;
@@ -92,12 +101,14 @@
             text-align: center;
             box-shadow: 0 0 10px #ffd0e5;
         }
+
         .producto img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 15px;
         }
+
         .btn-agregar {
             background: #ff74bc;
             color: white;
@@ -112,6 +123,7 @@
             max-width: 450px;
             margin: auto;
         }
+
         input, select, textarea {
             width: 100%;
             padding: 10px;
@@ -134,6 +146,7 @@
             display: flex;
             justify-content: space-between;
         }
+
         .btn-eliminar {
             background: #ff4d94;
             color: white;
@@ -141,6 +154,7 @@
             border-radius: 8px;
             cursor: pointer;
         }
+
         .btn-pago {
             margin-top: 20px;
             background: #ff74bc;
@@ -162,254 +176,172 @@
 </head>
 <body>
 
-<!-- ===== Header ===== -->
-<header>
-    <div class="logo">SEOUL ELAN</div>
-    <nav>
-        <a href="#" onclick="show('inicio')">Inicio</a>
-    </nav>
-    <div class="header-right">
-        <a href="#" onclick="show('registro')">Registro</a>
-        <a href="#" onclick="show('login')">Iniciar sesión</a>
-        <a href="#" onclick="show('carrito')">Carrito (<span id="contador">0</span>)</a>
-    </div>
-</header>
+    <!-- ===== Header ===== -->
+    <header>
+        <div class="logo">SEOUL ELAN</div>
+        <nav>
+            <a href="#" onclick="show('inicio')">Inicio</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" onclick="show('registro')">Registro</a>
+            <a href="#" onclick="show('login')">Iniciar sesión</a>
+            <a href="#" onclick="show('carrito')">Carrito (<span id="contador">0</span>)</a>
+        </div>
+    </header>
 
-<!-- ===== Sección Inicio ===== -->
-<section id="inicio" class="active">
-    <div class="hero">
-        <h1>Nuestra Historia</h1>
-        <p class="historia">
-            Seoul Elyan nació del amor por la estética coreana y el deseo de traer productos elegantes,
-            delicados y funcionales a quienes buscan elevar su rutina de belleza.  
-            Creemos en la autenticidad, el cuidado personal y el encanto visual que define la esencia K-Beauty.
-        </p>
-    </div>
-
-    <h2 class="subinicio">Productos Destacados</h2>
-
-    <div class="productos">
-        <!-- Producto ejemplo -->
-        <div class="producto">
-            <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-blush/34493780885639.webp">
-            <h3>Rubor líquido Soft Pinch</h3>
-            <p>$394</p>
-            <div class="btn-agregar" onclick="agregar('Rubor líquido Soft Pinch',394)">Agregar</div>
+    <!-- ===== Sección Inicio ===== -->
+    <section id="inicio" class="active">
+        <div class="hero">
+            <h1>Nuestra Historia</h1>
+            <p class="historia">
+                Seoul Elyan nació del amor por la estética coreana y el deseo de traer productos elegantes,
+                delicados y funcionales a quienes buscan elevar su rutina de belleza.  
+                Creemos en la autenticidad, el cuidado personal y el encanto visual que define la esencia K-Beauty.
+            </p>
         </div>
 
-        <div class="producto">
-            <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-foundation/40242055676039.webp">
-            <h3>Base de maquillaje ligera Liquid Touch</h3>
-            <p>$573</p>
-            <div class="btn-agregar" onclick="agregar('Base de maquillaje ligera Liquid Touch',573)">Agregar</div>
+        <h2 class="subinicio">Productos Destacados</h2>
+        <div class="productos">
+            <div class="producto">
+                <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-blush/34493780885639.webp">
+                <h3>Rubor líquido Soft Pinch</h3>
+                <p>$394</p>
+                <div class="btn-agregar" onclick="agregar('Rubor líquido Soft Pinch',394)">Agregar</div>
+            </div>
+
+            <div class="producto">
+                <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-foundation/40242055676039.webp">
+                <h3>Base de maquillaje ligera Liquid Touch</h3>
+                <p>$573</p>
+                <div class="btn-agregar" onclick="agregar('Base de maquillaje ligera Liquid Touch',573)">Agregar</div>
+            </div>
+
+            <div class="producto">
+                <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-bronzer/40385281949831.webp">
+                <h3>Bronceador en barra sin esfuerzo Warm Wishes</h3>
+                <p>$441</p>
+                <div class="btn-agregar" onclick="agregar('Bronceador en barra sin esfuerzo Warm Wishes',441)">Agregar</div>
+            </div>
+
+            <div class="producto">
+                <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-setting-spray/34472529002631.jpg">
+                <h3>Bruma 4 en 1 Always an Optimist</h3>
+                <p>$475</p>
+                <div class="btn-agregar" onclick="agregar('Bruma 4 en 1 Always an Optimist',475)">Agregar</div>
+            </div>
         </div>
+    </section>
 
-        <div class="producto">
-            <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-bronzer/40385281949831.webp">
-            <h3>Bronceador en barra sin esfuerzo Warm Wishes</h3>
-            <p>$441</p>
-            <div class="btn-agregar" onclick="agregar('Bronceador en barra sin esfuerzo Warm Wishes',441)">Agregar</div>
-        </div>
+    <!-- ===== Sección Registro ===== -->
+    <section id="registro">
+        <h1>Registro</h1>
+        <form id="registroForm" method="POST" action="https://script.google.com/macros/s/AKfycbxiQqbnrdErwZAzgloUQBG4LpU2CeA1mYbtYLecWmMuqDtLInOBG2VYIrWk4Upz6W5BrA/exec">
+            <div>
+                <label for="registro_nombre">Nombre(s):</label>
+                <input type="text" id="registro_nombre" name="usuario_nombre" required>
+            </div>
+            <div>
+                <label>Apellido paterno:</label>
+                <input type="text" id="registro_apP" name="apellido_paterno" required>
+            </div>
+            <div>
+                <label>Apellido materno:</label>
+                <input type="text" id="registro_apM" name="apellido_materno">
+            </div>
+            <div>
+                <label>Pronombre/s:</label>
+                <input type="text" id="registro_pronombre" name="pronombres">
+            </div>
+            <div>
+                <label for="registro_fecha">Fecha de nacimiento</label>
+                <input type="date" id="registro_fecha" name="fecha_nacimiento">
+            </div>
+            <div>
+                <label for="registro_email">Correo electrónico:</label>
+                <input type="email" id="registro_email" name="usuario_email" required>
+            </div>
+            <div>
+                <label for="registro_email_confirm">Confirmar correo:</label>
+                <input type="email" id="registro_email_confirm" name="usuario_email_confirm" required>
+            </div>
+            <div>
+                <label for="registro_pass">Contraseña:</label>
+                <input type="password" id="registro_pass" name="usuario_pass" required>
+            </div>
+            <div>
+                <label for="registro_pass_confirm">Confirmar contraseña:</label>
+                <input type="password" id="registro_pass_confirm" name="usuario_pass_confirm" required>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="registro_promo" name="recibir_promociones" value="TRUE">
+                <label for="registro_promo">Deseo recibir promociones</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="registro_terminos" name="acepta_terminos" required value="TRUE">
+                <label for="registro_terminos">Acepto términos y condiciones</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="registro_priv" name="acepta_privacidad" required value="TRUE">
+                <label for="registro_priv">Acepto políticas de privacidad</label>
+            </div>
+            <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
+        </form>
+    </section>
 
-        <div class="producto">
-            <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-setting-spray/34472529002631.jpg">
-            <h3>Bruma 4 en 1 Always an Optimist</h3>
-            <p>$475</p>
-            <div class="btn-agregar" onclick="agregar('Bruma 4 en 1 Always an Optimist',475)">Agregar</div>
-        </div>
+    <!-- ===== Scripts ===== -->
+    <script>
+        let carrito = [];
 
-        <!-- Agrega el resto de productos igual -->
-    </div>
-</section>
+        function show(s) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(s).classList.add('active');
+        }
 
-<!-- ===== Sección Registro ===== -->
-<section id="registro">
-    <h1>Registro</h1>
+        function agregar(nombre, precio) {
+            carrito.push({nombre, precio});
+            document.getElementById('contador').textContent = carrito.length;
+            renderCarrito();
+        }
 
-    <form id="registroForm" method="POST" action="https://script.google.com/macros/s/AKfycbxiQqbnrdErwZAzgloUQBG4LpU2CeA1mYbtYLecWmMuqDtLInOBG2VYIrWk4Upz6W5BrA/exec">
-        <div>
-            <label for="registro_nombre">Nombre(s):</label>
-            <input type="text" id="registro_nombre" name="usuario_nombre" required>
-        </div>
-        <div>
-            <label>Apellido paterno:</label>
-            <input type="text" id="registro_apP" name="apellido_paterno" required>
-        </div>
-        <div>
-            <label>Apellido materno:</label>
-            <input type="text" id="registro_apM" name="apellido_materno">
-        </div>
-        <div>
-            <label>Pronombre/s:</label>
-            <input type="text" id="registro_pronombre" name="pronombres">
-        </div>
-        <div>
-            <label for="registro_fecha">Fecha de nacimiento</label>
-            <input type="date" id="registro_fecha" name="fecha_nacimiento">
-        </div>
-        <div>
-            <label for="registro_email">Correo electrónico:</label>
-            <input type="email" id="registro_email" name="usuario_email" required>
-        </div>
-        <div>
-            <label for="registro_email_confirm">Confirmar correo:</label>
-            <input type="email" id="registro_email_confirm" name="usuario_email_confirm" required>
-        </div>
-        <div>
-            <label for="registro_pass">Contraseña:</label>
-            <input type="password" id="registro_pass" name="usuario_pass" required>
-        </div>
-        <div>
-            <label for="registro_pass_confirm">Confirmar contraseña:</label>
-            <input type="password" id="registro_pass_confirm" name="usuario_pass_confirm" required>
-        </div>
-        <div class="checkbox-container">
-            <input type="checkbox" id="registro_promo" name="recibir_promociones">
-            <label for="registro_promo">Deseo recibir promociones</label>
-        </div>
-        <div class="checkbox-container">
-            <input type="checkbox" id="registro_terminos" name="acepta_terminos" required>
-            <label for="registro_terminos">Acepto términos y condiciones</label>
-        </div>
-        <div class="checkbox-container">
-            <input type="checkbox" id="registro_priv" name="acepta_privacidad" required>
-            <label for="registro_priv">Acepto políticas de privacidad</label>
-        </div>
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">
-            Registrar
-        </button>
-    </form>
-</section>
+        function renderCarrito() {
+            let cont = document.getElementById('lista-carrito');
+            cont.innerHTML = '';
+            let total = 0;
+            carrito.forEach((i, x) => {
+                total += i.precio;
+                cont.innerHTML += `
+                    <div class='carrito-item'>
+                        <div>${i.nombre} – $${i.precio}</div>
+                        <div class='btn-eliminar' onclick='eliminar(${x})'>Eliminar</div>
+                    </div>`;
+            });
+            document.getElementById('total').textContent = total;
+        }
 
-<!-- ===== Sección Login ===== -->
-<section id="login">
-    <h1>Iniciar sesión</h1>
-    <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');" action="/procesar-login" method="POST">
-        <div>
-            <label for="login_email">Correo electrónico:</label>
-            <input type="email" id="login_email" name="usuario_email" placeholder="Correo electrónico" required>
-        </div>
-        <div>
-            <label for="login_pass">Contraseña:</label>
-            <input type="password" id="login_pass" name="usuario_pass" placeholder="Contraseña" required>
-        </div>
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Ingresar</button>
-    </form>
-</section>
+        function eliminar(i){
+            carrito.splice(i,1);
+            document.getElementById('contador').textContent = carrito.length;
+            renderCarrito();
+        }
 
-<!-- ===== Sección Carrito ===== -->
-<section id="carrito">
-    <h1>Carrito</h1>
-    <div id="lista-carrito"></div>
-    <h2>Total: $<span id="total">0</span></h2>
-    <div class="btn-pago" onclick="show('pedido')">Ir a pagar</div>
-</section>
+        (function(){
+            const form = document.getElementById('registroForm');
+            if(!form) return;
+            form.addEventListener('submit', function(e){
+                const email = document.getElementById('registro_email').value.trim();
+                const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
+                const pass = document.getElementById('registro_pass').value;
+                const passConfirm = document.getElementById('registro_pass_confirm').value;
 
-<!-- ===== Sección Pedido ===== -->
-<section id="pedido">
-    <h1>Continuar Pedido</h1>
-    <form onsubmit="event.preventDefault(); show('final');" action="/procesar-pedido" method="POST">
-        <label for="pedido_fecha">Fecha de entrega</label>
-        <input type="date" id="pedido_fecha" name="fecha_entrega" required>
-        <label for="pedido_hora">Hora</label>
-        <input type="time" id="pedido_hora" name="hora_entrega" required>
-        <label for="pedido_domicilio">Domicilio Completo</label>
-        <input type="text" id="pedido_domicilio" name="domicilio" placeholder="Calle, número, colonia, ciudad" required>
-        <label for="pedido_calles">Entre qué calles</label>
-        <input type="text" id="pedido_calles" name="entre_calles" placeholder="Entre calle A y calle B">
-        <label for="pedido_instrucciones">Instrucciones o comentarios</label>
-        <textarea id="pedido_instrucciones" name="instrucciones" rows="4" placeholder="Dejar en recepción, puerta trasera, etc."></textarea>
-        <div class="checkbox-container">
-            <input type="checkbox" id="pedido_confirmo" name="confirmo_informacion" required>
-            <label for="pedido_confirmo">Confirmo que la información es correcta</label>
-        </div>
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Finalizar compra</button>
-    </form>
-</section>
-
-<!-- ===== Sección Final ===== -->
-<section id="final">
-    <h1>Pedido completado</h1>
-    <p style="text-align:center;font-size:18px;">Gracias por tu compra</p>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer>
-    © 2025 Seoul Elan. Todos los derechos reservados.
-</footer>
-
-<!-- ===== Scripts ===== -->
-<script>
-    let carrito = [];
-
-    function show(s) {
-        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-        document.getElementById(s).classList.add('active');
-    }
-
-    function agregar(nombre, precio) {
-        carrito.push({nombre, precio});
-        document.getElementById('contador').textContent = carrito.length;
-        renderCarrito();
-    }
-
-    function renderCarrito() {
-        let cont = document.getElementById('lista-carrito');
-        cont.innerHTML = '';
-        let total = 0;
-
-        carrito.forEach((i, x) => {
-            total += i.precio;
-            cont.innerHTML += `
-            <div class='carrito-item'>
-                <div>${i.nombre} – $${i.precio}</div>
-                <div class='btn-eliminar' onclick='eliminar(${x})'>Eliminar</div>
-            </div>`;
-        });
-
-        document.getElementById('total').textContent = total;
-    }
-
-    function eliminar(i) {
-        carrito.splice(i, 1);
-        document.getElementById('contador').textContent = carrito.length;
-        renderCarrito();
-    }
-</script>
-
-<!-- ===== Validación de registro: correos y contraseñas ===== -->
-<script>
-    (function(){
-        const form = document.getElementById('registroForm');
-        if (!form) return;
-
-        form.addEventListener('submit', function(e){
-            const email = document.getElementById('registro_email').value.trim();
-            const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
-            const pass = document.getElementById('registro_pass').value;
-            const passConfirm = document.getElementById('registro_pass_confirm').value;
-
-            if (email === '' || emailConfirm === '' || pass === '' || passConfirm === '') {
-                alert('Por favor, completa los campos de correo y contraseña.');
-                e.preventDefault();
-                return;
-            }
-
-            if (email !== emailConfirm) {
-                alert('Los correos no coinciden.');
-                e.preventDefault();
-                return;
-            }
-
-            if (pass !== passConfirm) {
-                alert('Las contraseñas no coinciden.');
-                e.preventDefault();
-                return;
-            }
-        });
-    })();
-</script>
+                if(email === '' || emailConfirm === '' || pass === '' || passConfirm === '') {
+                    alert('Por favor, completa los campos de correo y contraseña.');
+                    e.preventDefault(); return;
+                }
+                if(email !== emailConfirm) {alert('Los correos no coinciden.'); e.preventDefault(); return;}
+                if(pass !== passConfirm) {alert('Las contraseñas no coinciden.'); e.preventDefault(); return;}
+            });
+        })();
+    </script>
 
 </body>
 </html>
-
