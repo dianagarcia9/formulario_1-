@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="es">
 <head>
@@ -152,13 +152,8 @@ footer {
     color: white;
     padding: 20px;
 }
-.respuesta-servidor {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #503345;
-}
 </style>
+
 </head>
 <body>
 
@@ -212,31 +207,52 @@ footer {
 <section id="registro">
     <h1>Registro</h1>
 
-    <!-- FORMULARIO DE REGISTRO: usa los names EXACTOS que están en tu hoja -->
-    <form id="registroForm">
+  
+    <form method="POST" action="https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec">
 
         <div>
             <label for="registro_nombre">Nombre(s):</label>
-            <!-- name EXACTO: "Nombre(s)" -->
-            <input type="text" id="registro_nombre" name="Nombre(s)" placeholder="Nombre(s)" required>
+            <input type="text" id="registro_nombre" name="usuario_nombre" placeholder="Nombre(s)" required>
         </div>
 
         <div>
             <label for="registro_apP">Apellido paterno:</label>
-            <!-- name EXACTO: "Apellido paterno" -->
-            <input type="text" id="registro_apP" name="Apellido paterno" placeholder="Apellido paterno" required>
+            <input type="text" id="registro_apP" name="apellido_paterno" placeholder="Apellido paterno" required>
         </div>
 
         <div>
             <label for="registro_apM">Apellido materno:</label>
-            <!-- name EXACTO: "Apellido materno" -->
-            <input type="text" id="registro_apM" name="Apellido materno" placeholder="Apellido materno">
+            <input type="text" id="registro_apM" name="apellido_materno" placeholder="Apellido materno">
         </div>
 
         <div>
             <label for="registro_pronombre">Pronombre/s:</label>
-            <!-- name EXACTO: "Pronombre/s" -->
-            <input type="text" id="registro_pronombre" name="Pronombre/s" placeholder="Pronombre/s">
+            <input type="text" id="registro_pronombre" name="pronombres" placeholder="Pronombre/s">
+        </div>
+
+        <div>
+            <label for="registro_fecha">Fecha de nacimiento</label>
+            <input type="date" id="registro_fecha" name="fecha_nacimiento">
+        </div>
+
+        <div>
+            <label for="registro_email">Correo electrónico:</label>
+            <input type="email" id="registro_email" name="usuario_email" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div>
+            <label for="registro_email_confirm">Confirmar correo:</label>
+            <input type="email" id="registro_email_confirm" name="confirmar_email" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div>
+            <label for="registro_pass">Contraseña:</label>
+            <input type="password" id="registro_pass" name="usuario_pass" placeholder="********" required>
+        </div>
+
+        <div>
+            <label for="registro_pass_confirm">Confirmar contraseña:</label>
+            <input type="password" id="registro_pass_confirm" name="confirmar_pass" placeholder="********" required>
         </div>
 
         <div class="checkbox-container"><input type="checkbox" id="registro_promo" name="recibir_promociones"><label for="registro_promo">Deseo recibir promociones</label></div>
@@ -244,14 +260,12 @@ footer {
         <div class="checkbox-container"><input type="checkbox" id="registro_priv" name="acepta_privacidad" required><label for="registro_priv">Acepto políticas de privacidad</label></div>
 
         <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
-
-        <p id="mensajeRegistro" class="respuesta-servidor" aria-live="polite"></p>
     </form>
 </section>
 
 <section id="login">
     <h1>Iniciar sesión</h1>
-    <!-- FORMULARIO DE LOGIN (igual que tenías) -->
+    
     <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');" action="/procesar-login" method="POST">
         <div>
             <label for="login_email">Correo electrónico:</label>
@@ -276,7 +290,7 @@ footer {
 
 <section id="pedido">
     <h1>Continuar Pedido</h1>
-    <!-- FORMULARIO DE PEDIDO (igual que tenías) -->
+   
     <form onsubmit="event.preventDefault(); show('final');" action="/procesar-pedido" method="POST">
         <label for="pedido_fecha">Fecha de entrega</label>
         <input type="date" id="pedido_fecha" name="fecha_entrega" required>
@@ -303,7 +317,22 @@ footer {
 </footer>
 
 <script>
-/* ---------- Carrito y navegación (tu código original) ---------- */
+		fetch(
+		"https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec"
+		)
+		
+		redirect:"follow",
+		method:"POST",
+		body:"FormDataString",
+		headers:{
+		"Content-Type": "Text/Plain;charset=utf-8"
+		}
+		
+	
+	</script>
+
+
+<script>
 let carrito = [];
 
 function show(s){
@@ -339,61 +368,44 @@ function eliminar(i){
     document.getElementById('contador').textContent = carrito.length;
     renderCarrito();
 }
+</script>
 
-/* ---------- Fetch funcional para enviar formulario a tu Apps Script ---------- */
-/* Reemplaza la URL por la tuya si es diferente (yo usé la que encontraste en tu archivo). */
+<!-- Validación de registro: correos y contraseñas -->
+<script>
 (function(){
-    const registroForm = document.getElementById('registroForm');
-    if (!registroForm) return;
+    const form = document.getElementById('registroForm');
+    if (!form) return;
 
-    registroForm.addEventListener('submit', async function(e){
-        e.preventDefault();
+    form.addEventListener('submit', function(e){
+        // Obtener valores
+        const email = document.getElementById('registro_email').value.trim();
+        const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
+        const pass = document.getElementById('registro_pass').value;
+        const passConfirm = document.getElementById('registro_pass_confirm').value;
 
-        // Validación básica (campos obligatorios)
-        const nombre = document.getElementById('registro_nombre').value.trim();
-        const apP = document.getElementById('registro_apP').value.trim();
-        const apM = document.getElementById('registro_apM').value.trim();
-        // Pronombre/s puede quedar vacío si el usuario no lo llena
-        // Si quieres que sea obligatorio, añade comprobación.
-
-        if (!nombre || !apP) {
-            document.getElementById('mensajeRegistro').textContent = "Por favor completa los campos obligatorios.";
+        // Validaciones básicas
+        if (email === '' || emailConfirm === '' || pass === '' || passConfirm === '') {
+            alert('Por favor, completa los campos de correo y contraseña.');
+            e.preventDefault();
             return;
         }
 
-        // Construye FormData con los names EXACTOS que espera tu Apps Script / hoja
-        const formData = new FormData();
-        formData.append("Nombre(s)", nombre);
-        formData.append("Apellido paterno", apP);
-        formData.append("Apellido materno", apM);
-        formData.append("Pronombre/s", document.getElementById('registro_pronombre').value.trim());
-
-        // URL de tu Web App de Apps Script (usa la que tú tengas publicada)
-        const scriptUrl = "https://script.google.com/macros/s/AKfycbwK118UwGB-CHaFsAwH1HBCbaZRjyvETYU3cTw-eA9waKyLLVefHi9I99CpR6J9US6I/exec";
-
-        try {
-            const resp = await fetch(scriptUrl, {
-                method: 'POST',
-                body: formData
-            });
-
-            // Apps Script en tu código devuelve JSON; intentamos parsearlo
-            const json = await resp.json();
-
-            if (json && json.result === "success") {
-                document.getElementById('mensajeRegistro').textContent = "Registro enviado correctamente. Fila: " + json.row;
-                registroForm.reset();
-            } else {
-                // Si la respuesta trae detalles de error, muéstralos si hay
-                console.error('Respuesta de Apps Script:', json);
-                document.getElementById('mensajeRegistro').textContent = "Ocurrió un error al enviar. Revisa la consola.";
-            }
-        } catch (err) {
-            console.error('Error enviando el formulario:', err);
-            document.getElementById('mensajeRegistro').textContent = "Error de red o del servidor. Revisa la consola.";
+        if (email !== emailConfirm) {
+            alert('Los correos no coinciden.');
+            e.preventDefault();
+            return;
         }
+
+        if (pass !== passConfirm) {
+            alert('Las contraseñas no coinciden.');
+            e.preventDefault();
+            return;
+        }
+
+        
     });
 })();
 </script>
 
 </body>
+</html>
