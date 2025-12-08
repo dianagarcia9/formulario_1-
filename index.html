@@ -1,396 +1,316 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8" />
 <title>Seoul Elan</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Lexend+Giga&display=swap" rel="stylesheet">
-
 <style>
-
-body {
-    font-family: 'Lexend Giga', sans-serif; /* fuente para el contenido */
-    margin: 0;
-    background: #fff6fa;
-    color: #4e2e3f;
-}
-h1, h2 {
-    text-align: center;
-    font-family: 'Quintessential', serif; /* fuente para títulos */
-}
-
-header {
-    background: #ff8ec7;
-    color: white;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header .logo {
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-nav a {
-    margin: 0 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-}
-nav a:hover {
-    text-decoration: underline;
-}
-.header-right a {
-    margin-left: 20px;
-    background: white;
-    color: #ff62b3;
-    padding: 6px 14px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-}
-.header-right a:hover {
-    background: #ffe6f2;
-}
-section {
-    display: none;
-    padding: 40px;
-}
-.active {
-    display: block;
-}
-.hero {
-    background: #ffd1e8;
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-.historia {
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-    color: #503345;
-    font-size: 17px;
-    line-height: 1.6;
-}
-.productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-    gap: 25px;
-}
-.producto {
-    background: white;
-    border-radius: 18px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px #ffd0e5;
-}
-.producto img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-.btn-agregar {
-    background: #ff74bc;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-form {
-    max-width: 450px;
-    margin: auto;
-}
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #ffa8d6;
-}
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.carrito-item {
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-}
-.btn-eliminar {
-    background: #ff4d94;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-.btn-pago {
-    margin-top: 20px;
-    background: #ff74bc;
-    color: white;
-    padding: 14px 25px;
-    border-radius: 25px;
-    display: inline-block;
-    cursor: pointer;
-}
-footer {
-    margin-top: 60px;
-    text-align: center;
-    background: #ff8ec7;
-    color: white;
-    padding: 20px;
-}
+  /* --- estilos compactos (mantuve tu paleta) --- */
+  body { font-family: 'Lexend Giga', sans-serif; margin:0; background:#fff6fa; color:#4e2e3f; }
+  h1,h2 { text-align:center; font-family:'Quintessential',serif; }
+  header { background:#ff8ec7; color:white; padding:15px 30px; display:flex; align-items:center; justify-content:space-between; }
+  .logo{font-size:20px;font-weight:700}
+  nav a{color:white;text-decoration:none;margin-right:18px;font-weight:600}
+  .header-right a{margin-left:12px;background:white;color:#ff62b3;padding:6px 12px;border-radius:18px;text-decoration:none;font-weight:700}
+  section{display:none;padding:32px}
+  .active{display:block}
+  .hero{background:#ffd1e8;padding:30px;border-radius:16px;margin-bottom:24px;text-align:center}
+  .historia{max-width:900px;margin:auto;color:#503345;font-size:17px;line-height:1.6}
+  .productos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+  .producto{background:white;border-radius:14px;padding:16px;text-align:center;box-shadow:0 0 10px #ffd0e5}
+  .producto img{width:100%;height:200px;object-fit:cover;border-radius:12px}
+  .btn-agregar{background:#ff74bc;color:white;padding:10px 18px;border-radius:20px;display:inline-block;cursor:pointer;margin-top:10px}
+  form{max-width:520px;margin:auto}
+  input,select,textarea{width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #ffa8d6}
+  .checkbox-container{display:flex;align-items:center;gap:10px}
+  .carrito-item{background:white;padding:12px;border-radius:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .btn-eliminar{background:#ff4d94;color:white;padding:6px 10px;border-radius:8px;cursor:pointer}
+  .btn-pago{margin-top:16px;background:#ff74bc;color:white;padding:12px 20px;border-radius:20px;display:inline-block;cursor:pointer;text-align:center}
+  footer{margin-top:40px;text-align:center;background:#ff8ec7;color:white;padding:18px}
+  .respuesta-servidor{text-align:center;margin-top:10px;font-weight:bold;color:#503345}
 </style>
-
 </head>
 <body>
 
 <header>
-    <div class="logo">SEOUL ELAN</div>
-    <nav>
-        <a href="#" onclick="show('inicio')">Inicio</a>
-    </nav>
-    <div class="header-right">
-        <a href="#" onclick="show('registro')">Registro</a>
-        <a href="#" onclick="show('login')">Iniciar sesión</a>
-        <a href="#" onclick="show('carrito')">Carrito (<span id="contador">0</span>)</a>
-    </div>
+  <div class="logo">SEOUL ELAN</div>
+  <nav>
+    <a href="#" onclick="show('inicio')">Inicio</a>
+    <a href="#" onclick="show('registro')">Registro</a>
+    <a href="#" onclick="show('carrito')">Carrito</a>
+  </nav>
+  <div class="header-right">
+    <a href="#" onclick="show('registro')">Registro</a>
+    <a href="#" onclick="show('login')">Iniciar sesión</a>
+    <a href="#" onclick="show('carrito')">Carrito (<span id="contador">0</span>)</a>
+  </div>
 </header>
 
+<!-- ================= INICIO ================= -->
 <section id="inicio" class="active">
-    <div class="hero">
-        <h1>Nuestra Historia</h1>
-        <p class="historia">
-            Seoul Elyan nació del amor por la estética coreana y el deseo de traer productos elegantes,
-            delicados y funcionales a quienes buscan elevar su rutina de belleza.  
-            Creemos en la autenticidad, el cuidado personal y el encanto visual que define la esencia K-Beauty.
-        </p>
+  <div class="hero">
+    <h1>Nuestra Historia</h1>
+    <p class="historia">
+      Seoul Elyan nació del amor por la estética coreana y el deseo de traer productos elegantes,
+      delicados y funcionales a quienes buscan elevar su rutina de belleza.
+    </p>
+  </div>
+
+  <h2>Productos Destacados</h2>
+  <div class="productos">
+    <!-- Ejemplos: puedes reemplazar imágenes y textos -->
+    <div class="producto">
+      <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-blush/34493780885639.webp" alt="">
+      <h3>Rubor líquido Soft Pinch</h3><p>$394</p>
+      <div class="btn-agregar" onclick="agregar('Rubor líquido Soft Pinch',394)">Agregar</div>
     </div>
-
-    <h2 class="subinicio">Productos Destacados</h2>
-
-    <div class="productos">
-
-        
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-blush/34493780885639.webp"><h3>Rubor líquido Soft Pinch</h3><p>$394</p><div class="btn-agregar" onclick="agregar('Rubor líquido Soft Pinch',394)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-foundation/40242055676039.webp"><h3>Base de maquillaje ligera Liquid Touch</h3><p>$573</p><div class="btn-agregar" onclick="agregar('Base de maquillaje ligera Liquid Touch',573)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-bronzer/40385281949831.webp"><h3>Bronceador en barra sin esfuerzo Warm Wishes</h3><p>$441</p><div class="btn-agregar" onclick="agregar('Bronceador en barra sin esfuerzo Warm Wishes',441)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-setting-spray/34472529002631.jpg"><h3>Bruma 4 en 1 Always an Optimist</h3><p>$475</p><div class="btn-agregar" onclick="agregar('Bruma 4 en 1 Always an Optimist',475)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-contour/42181696979079.webp"><h3>Contorno líquido Soft Pinch</h3><p>$430</p><div class="btn-agregar" onclick="agregar('Contorno líquido Soft Pinch',430)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-concealer/40242002460807.webp"><h3>Corrector iluminador Liquid Touch</h3><p>$378</p><div class="btn-agregar" onclick="agregar('Corrector iluminador Liquid Touch',378)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-tinted-moisturizer/39775687016583.webp"><h3>Humectante con color Positive Light, protector solar de amplio espectro FPS 20</h3><p>$473</p><div class="btn-agregar" onclick="agregar('Humectante con color Positive Light, protector solar de amplio espectro FPS 20',473)">Agregar</div></div>
-
-        <div class="producto"><img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-highlighter/40253134864519.webp"><h3>Iluminador Positive Light Silky Touch</h3><p>$425</p><div class="btn-agregar" onclick="agregar('Iluminador Positive Light Silky Touch',425)">Agregar</div></div>
-
-
+    <div class="producto">
+      <img src="https://www.rare-beauty.com.mx/wp-content/uploads/rare-beauty-foundation/40242055676039.webp" alt="">
+      <h3>Base ligera Liquid Touch</h3><p>$573</p>
+      <div class="btn-agregar" onclick="agregar('Base ligera Liquid Touch',573)">Agregar</div>
     </div>
+    <!-- añade más productos según necesites -->
+  </div>
 </section>
 
+<!-- ================= REGISTRO (único, con id claro) ================= -->
 <section id="registro">
-    <h1>Registro</h1>
+  <h1>Registro</h1>
 
-    <!-- Usando exactamente la línea que me diste: -->
-    <form action="/procesar-datos" method="POST" id="registroForm">
+  <!-- IMPORTANTE: ajusta los names a EXACTAMENTE los que tiene tu hoja de Google Sheets -->
+  <form id="registroForm">
+    <div>
+      <label for="registro_nombre">Nombre(s):</label>
+      <!-- Ejemplo: si tu hoja espera "Nombre(s)" usa exactamente eso -->
+      <input type="text" id="registro_nombre" name="Nombre(s)" placeholder="Nombre(s)" required>
+    </div>
 
-        <div>
-            <label for="registro_nombre">Nombre(s):</label>
-            <input type="text" id="registro_nombre" name="usuario_nombre" placeholder="Nombre(s)" required>
-        </div>
+    <div>
+      <label for="registro_apP">Apellido paterno:</label>
+      <input type="text" id="registro_apP" name="Apellido paterno" placeholder="Apellido paterno" required>
+    </div>
 
-        <div>
-            <label for="registro_apP">Apellido paterno:</label>
-            <input type="text" id="registro_apP" name="apellido_paterno" placeholder="Apellido paterno" required>
-        </div>
+    <div>
+      <label for="registro_apM">Apellido materno:</label>
+      <input type="text" id="registro_apM" name="Apellido materno" placeholder="Apellido materno">
+    </div>
 
-        <div>
-            <label for="registro_apM">Apellido materno:</label>
-            <input type="text" id="registro_apM" name="apellido_materno" placeholder="Apellido materno">
-        </div>
+    <div>
+      <label for="registro_pronombre">Pronombre/s:</label>
+      <input type="text" id="registro_pronombre" name="Pronombre/s" placeholder="Pronombre/s">
+    </div>
 
-        <div>
-            <label for="registro_pronombre">Pronombre/s:</label>
-            <input type="text" id="registro_pronombre" name="pronombres" placeholder="Pronombre/s">
-        </div>
+    <div>
+      <label for="registro_fecha">Fecha de nacimiento:</label>
+      <input type="date" id="registro_fecha" name="Fecha de nacimiento">
+    </div>
 
-        <div>
-            <label for="registro_fecha">Fecha de nacimiento</label>
-            <input type="date" id="registro_fecha" name="fecha_nacimiento">
-        </div>
+    <div>
+      <label for="registro_email">Correo electrónico:</label>
+      <input type="email" id="registro_email" name="Correo electrónico" placeholder="correo@ejemplo.com" required>
+    </div>
 
-        <div>
-            <label for="registro_email">Correo electrónico:</label>
-            <input type="email" id="registro_email" name="usuario_email" placeholder="correo@ejemplo.com" required>
-        </div>
+    <div>
+      <label for="registro_email_confirm">Confirmar correo:</label>
+      <input type="email" id="registro_email_confirm" name="Confirmar correo" placeholder="correo@ejemplo.com" required>
+    </div>
 
-        <div>
-            <label for="registro_email_confirm">Confirmar correo:</label>
-            <input type="email" id="registro_email_confirm" name="confirmar_email" placeholder="correo@ejemplo.com" required>
-        </div>
+    <div>
+      <label for="registro_pass">Contraseña:</label>
+      <input type="password" id="registro_pass" name="Contraseña" placeholder="********" required>
+    </div>
 
-        <div>
-            <label for="registro_pass">Contraseña:</label>
-            <input type="password" id="registro_pass" name="usuario_pass" placeholder="********" required>
-        </div>
+    <div>
+      <label for="registro_pass_confirm">Confirmar contraseña:</label>
+      <input type="password" id="registro_pass_confirm" name="Confirmar contraseña" placeholder="********" required>
+    </div>
 
-        <div>
-            <label for="registro_pass_confirm">Confirmar contraseña:</label>
-            <input type="password" id="registro_pass_confirm" name="confirmar_pass" placeholder="********" required>
-        </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="registro_promo" name="recibir_promociones">
+      <label for="registro_promo">Deseo recibir promociones</label>
+    </div>
 
-        <div class="checkbox-container"><input type="checkbox" id="registro_promo" name="recibir_promociones"><label for="registro_promo">Deseo recibir promociones</label></div>
-        <div class="checkbox-container"><input type="checkbox" id="registro_terminos" name="acepta_terminos" required><label for="registro_terminos">Acepto términos y condiciones</label></div>
-        <div class="checkbox-container"><input type="checkbox" id="registro_priv" name="acepta_privacidad" required><label for="registro_priv">Acepto políticas de privacidad</label></div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="registro_terminos" name="acepta_terminos" required>
+      <label for="registro_terminos">Acepto términos y condiciones</label>
+    </div>
 
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
-    </form>
+    <div class="checkbox-container">
+      <input type="checkbox" id="registro_priv" name="acepta_privacidad" required>
+      <label for="registro_priv">Acepto políticas de privacidad</label>
+    </div>
+
+    <button type="submit" style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
+
+    <p id="mensajeRegistro" class="respuesta-servidor" aria-live="polite"></p>
+  </form>
 </section>
 
+<!-- ================= LOGIN ================= -->
 <section id="login">
-    <h1>Iniciar sesión</h1>
-    <!-- FORMULARIO DE LOGIN (igual que tenías) -->
-    <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');" action="/procesar-login" method="POST">
-        <div>
-            <label for="login_email">Correo electrónico:</label>
-            <input type="email" id="login_email" name="usuario_email" placeholder="Correo electrónico" required>
-        </div>
+  <h1>Iniciar sesión</h1>
+  <form onsubmit="event.preventDefault(); alert('Inicio de sesión (simulado)');">
+    <div><label for="login_email">Correo electrónico:</label>
+    <input type="email" id="login_email" name="usuario_email" required></div>
 
-        <div>
-            <label for="login_pass">Contraseña:</label>
-            <input type="password" id="login_pass" name="usuario_pass" placeholder="Contraseña" required>
-        </div>
+    <div><label for="login_pass">Contraseña:</label>
+    <input type="password" id="login_pass" name="usuario_pass" required></div>
 
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Ingresar</button>
-    </form>
+    <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Ingresar</button>
+  </form>
 </section>
 
+<!-- ================= CARRITO / PEDIDO ================= -->
 <section id="carrito">
-    <h1>Carrito</h1>
-    <div id="lista-carrito"></div>
-    <h2>Total: $<span id="total">0</span></h2>
-    <div class="btn-pago" onclick="show('pedido')">Ir a pagar</div>
+  <h1>Carrito</h1>
+  <div id="lista-carrito"></div>
+  <h2>Total: $<span id="total">0</span></h2>
+  <div class="btn-pago" onclick="show('pedido')">Ir a pagar</div>
 </section>
 
 <section id="pedido">
-    <h1>Continuar Pedido</h1>
-    <!-- FORMULARIO DE PEDIDO (igual que tenías) -->
-    <form onsubmit="event.preventDefault(); show('final');" action="/procesar-pedido" method="POST">
-        <label for="pedido_fecha">Fecha de entrega</label>
-        <input type="date" id="pedido_fecha" name="fecha_entrega" required>
-        <label for="pedido_hora">Hora</label>
-        <input type="time" id="pedido_hora" name="hora_entrega" required>
-        <label for="pedido_domicilio">Domicilio Completo</label>
-        <input type="text" id="pedido_domicilio" name="domicilio" placeholder="Calle, número, colonia, ciudad" required>
-        <label for="pedido_calles">Entre qué calles</label>
-        <input type="text" id="pedido_calles" name="entre_calles" placeholder="Entre calle A y calle B">
-        <label for="pedido_instrucciones">Instrucciones o comentarios</label>
-        <textarea id="pedido_instrucciones" name="instrucciones" rows="4" placeholder="Dejar en recepción, puerta trasera, etc."></textarea>
-        <div class="checkbox-container"><input type="checkbox" id="pedido_confirmo" name="confirmo_informacion" required><label for="pedido_confirmo">Confirmo que la información es correcta</label></div>
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Finalizar compra</button>
-    </form>
+  <h1>Continuar Pedido</h1>
+  <form onsubmit="event.preventDefault(); show('final');">
+    <label for="pedido_fecha">Fecha de entrega</label>
+    <input type="date" id="pedido_fecha" name="fecha_entrega" required>
+    <label for="pedido_hora">Hora</label>
+    <input type="time" id="pedido_hora" name="hora_entrega" required>
+    <label for="pedido_domicilio">Domicilio Completo</label>
+    <input type="text" id="pedido_domicilio" name="domicilio" required>
+    <label for="pedido_instrucciones">Instrucciones</label>
+    <textarea id="pedido_instrucciones" name="instrucciones" rows="3"></textarea>
+    <div class="checkbox-container"><input type="checkbox" id="pedido_confirmo" name="confirmo_informacion" required><label for="pedido_confirmo">Confirmo que la información es correcta</label></div>
+    <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Finalizar compra</button>
+  </form>
 </section>
 
 <section id="final">
-    <h1>Pedido completado</h1>
-    <p style="text-align:center;font-size:18px;">Gracias por tu compra</p>
+  <h1>Pedido completado</h1>
+  <p style="text-align:center;font-size:18px;">Gracias por tu compra</p>
 </section>
 
-<footer>
-    © 2025 Seoul Elan. Todos los derechos reservados.
-</footer>
+<footer>© 2025 Seoul Elan. Todos los derechos reservados.</footer>
 
 <script>
+/* ---------- Navegación y carrito (idéntico al tuyo, ordenado) ---------- */
 let carrito = [];
-
-function show(s){
-    document.querySelectorAll('section').forEach(sec=>sec.classList.remove('active'));
-    document.getElementById(s).classList.add('active');
+function show(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
 }
-
 function agregar(nombre,precio){
-    carrito.push({nombre,precio});
-    document.getElementById('contador').textContent = carrito.length;
-    renderCarrito();
+  carrito.push({nombre,precio});
+  document.getElementById('contador').textContent = carrito.length;
+  renderCarrito();
 }
-
 function renderCarrito(){
-    let cont=document.getElementById('lista-carrito');
-    cont.innerHTML='';
-    let total=0;
-
-    carrito.forEach((i,x)=>{
-        total+=i.precio;
-        cont.innerHTML += 
-        `<div class='carrito-item'>
-            <div>${i.nombre} – $${i.precio}</div>
-            <div class='btn-eliminar' onclick='eliminar(${x})'>Eliminar</div>
-        </div>`;
-    });
-
-    document.getElementById('total').textContent = total;
+  const cont = document.getElementById('lista-carrito');
+  cont.innerHTML = '';
+  let total = 0;
+  carrito.forEach((item, idx) => {
+    total += Number(item.precio) || 0;
+    const div = document.createElement('div');
+    div.className = 'carrito-item';
+    div.innerHTML = `<div>${item.nombre} – $${item.precio}</div>
+                     <div class="btn-eliminar" onclick="eliminar(${idx})">Eliminar</div>`;
+    cont.appendChild(div);
+  });
+  document.getElementById('total').textContent = total;
 }
-
 function eliminar(i){
-    carrito.splice(i,1);
-    document.getElementById('contador').textContent = carrito.length;
-    renderCarrito();
+  carrito.splice(i,1);
+  document.getElementById('contador').textContent = carrito.length;
+  renderCarrito();
 }
-</script>
 
-<!-- Validación de registro: correos y contraseñas -->
-<script>
+/* ---------- Envío de registro a Apps Script (fetch correcto) ---------- */
 (function(){
-    const form = document.getElementById('registroForm');
-    if (!form) return;
+  const registroForm = document.getElementById('registroForm');
+  if (!registroForm) return;
 
-    form.addEventListener('submit', function(e){
-        // Obtener valores
-        const email = document.getElementById('registro_email').value.trim();
-        const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
-        const pass = document.getElementById('registro_pass').value;
-        const passConfirm = document.getElementById('registro_pass_confirm').value;
+  // Cambia a TU URL de Web App de Apps Script si la tuya es distinta.
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbwK118UwGB-CHaFsAwH1HBCbaZRjyvETYU3cTw-eA9waKyLLVefHi9I99CpR6J9US6I/exec";
 
-        // Validaciones básicas
-        if (email === '' || emailConfirm === '' || pass === '' || passConfirm === '') {
-            alert('Por favor, completa los campos de correo y contraseña.');
-            e.preventDefault();
-            return;
+  registroForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    // Validaciones básicas
+    const nombre = document.getElementById('registro_nombre').value.trim();
+    const apP = document.getElementById('registro_apP').value.trim();
+    const email = document.getElementById('registro_email').value.trim();
+    const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
+    const pass = document.getElementById('registro_pass').value;
+    const passConfirm = document.getElementById('registro_pass_confirm').value;
+
+    if (!nombre || !apP || !email || !emailConfirm || !pass || !passConfirm) {
+      document.getElementById('mensajeRegistro').textContent = "Por favor completa los campos obligatorios.";
+      return;
+    }
+    if (email !== emailConfirm) {
+      document.getElementById('mensajeRegistro').textContent = "Los correos no coinciden.";
+      return;
+    }
+    if (pass !== passConfirm) {
+      document.getElementById('mensajeRegistro').textContent = "Las contraseñas no coinciden.";
+      return;
+    }
+
+    // Construye FormData con los names que están en los inputs (ajusta si tu hoja usa otros nombres)
+    const formData = new FormData();
+    // Usa exactamente los keys (names) que quieras que lleguen a la hoja
+    formData.append("Nombre(s)", nombre);
+    formData.append("Apellido paterno", apP);
+    formData.append("Apellido materno", document.getElementById('registro_apM').value.trim());
+    formData.append("Pronombre/s", document.getElementById('registro_pronombre').value.trim());
+    formData.append("Fecha de nacimiento", document.getElementById('registro_fecha').value);
+    formData.append("Correo electrónico", email);
+    formData.append("Confirmar correo", emailConfirm);
+    // Nota: no es buena práctica guardar contraseñas en texto plano en Sheets; si igual lo haces, cambia el name acorde.
+    formData.append("Contraseña", pass);
+    formData.append("Confirmar contraseña", passConfirm);
+    formData.append("recibir_promociones", document.getElementById('registro_promo').checked ? "SI" : "NO");
+    formData.append("acepta_terminos", document.getElementById('registro_terminos').checked ? "SI" : "NO");
+    formData.append("acepta_privacidad", document.getElementById('registro_priv').checked ? "SI" : "NO");
+
+    // Mostrar que estamos enviando
+    const mensajeEl = document.getElementById('mensajeRegistro');
+    mensajeEl.textContent = "Enviando...";
+    try {
+      const resp = await fetch(scriptUrl, {
+        method: 'POST',
+        body: formData,
+        // No setear Content-Type si usas FormData (browser lo hace automáticamente)
+        redirect: "follow"
+      });
+
+      // Algunos Apps Script devuelven JSON, otros un texto; lo manejamos flexible
+      let resultText;
+      try {
+        const json = await resp.json();
+        // Si tu Apps Script responde {result:"success", row:...} puedes usarlo
+        if (json && json.result === "success") {
+          mensajeEl.textContent = "Registro enviado correctamente. Fila: " + (json.row || "N/A");
+          registroForm.reset();
+        } else {
+          // Si no viene el campo result, mostramos lo que venga
+          mensajeEl.textContent = "Respuesta del servidor: " + JSON.stringify(json);
         }
-
-        if (email !== emailConfirm) {
-            alert('Los correos no coinciden.');
-            e.preventDefault();
-            return;
-        }
-
-        if (pass !== passConfirm) {
-            alert('Las contraseñas no coinciden.');
-            e.preventDefault();
-            return;
-        }
-
-        // Si llegamos aquí, todo está bien: el formulario se enviará al action "/procesar-datos"
-        // (no prevenimos el envío)
-    });
+        console.log("Respuesta JSON de Apps Script:", json);
+      } catch (errJson) {
+        // No vino JSON -> leemos como texto
+        resultText = await resp.text();
+        mensajeEl.textContent = "Respuesta del servidor: " + resultText;
+        console.log("Respuesta texto de Apps Script:", resultText);
+      }
+    } catch (err) {
+      console.error("Error enviando formulario:", err);
+      mensajeEl.textContent = "Error de red o del servidor. Revisa la consola (F12).";
+    }
+  });
 })();
 </script>
 
 </body>
-</html>  AQUI ESTA YA TE LO HABIA MANDADO
+</html>
