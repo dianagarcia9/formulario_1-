@@ -176,7 +176,6 @@
 </head>
 <body>
 
-    <!-- ===== Header ===== -->
     <header>
         <div class="logo">SEOUL ELAN</div>
         <nav>
@@ -189,7 +188,6 @@
         </div>
     </header>
 
-    <!-- ===== Sección Inicio ===== -->
     <section id="inicio" class="active">
         <div class="hero">
             <h1>Nuestra Historia</h1>
@@ -232,10 +230,9 @@
         </div>
     </section>
 
-    <!-- ===== Sección Registro ===== -->
-  <section id="registro">
+    <section id="registro">
         <h1>Registro</h1>
-        <form id="registroForm" method="POST" action="https://script.google.com/macros/s/AKfycbwDKvUU-vKI-SAMP3vhRg9xm2AzI2BojHwUIl7FiBC6k6boWXApiV85fkYTDFXJ_-c/exec">
+        <form id="registroForm">
             <div>
                 <label for="registro_nombre">Nombre(s):</label>
                 <input type="text" id="registro_nombre" name="usuario_nombre" required>
@@ -288,23 +285,43 @@
         </form>
     </section>
 
-    <!-- ===== Scripts ===== -->
+    <section id="login">
+        </section>
+    
+    <section id="carrito">
+        <h1>Tu Carrito</h1>
+        <div id="lista-carrito">
+            </div>
+        <p>Total: $<span id="total">0</span></p>
+        <div class="btn-pago">Proceder al pago</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Seoul Elan. Todos los derechos reservados.</p>
+    </footer>
+
+
     <script>
         let carrito = [];
 
         function show(s) {
             document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(s).classList.add('active');
+            if (s === 'carrito') {
+                renderCarrito();
+            }
         }
 
         function agregar(nombre, precio) {
             carrito.push({nombre, precio});
             document.getElementById('contador').textContent = carrito.length;
-            renderCarrito();
         }
 
         function renderCarrito() {
             let cont = document.getElementById('lista-carrito');
+            let totalDisplay = document.getElementById('total');
+            if (!cont || !totalDisplay) return;
+
             cont.innerHTML = '';
             let total = 0;
             carrito.forEach((i, x) => {
@@ -315,7 +332,7 @@
                         <div class='btn-eliminar' onclick='eliminar(${x})'>Eliminar</div>
                     </div>`;
             });
-            document.getElementById('total').textContent = total;
+            totalDisplay.textContent = total;
         }
 
         function eliminar(i){
@@ -325,23 +342,67 @@
         }
 
         (function(){
+            // 🚨 ¡CRÍTICO! PEGA AQUÍ LA NUEVA URL DE IMPLEMENTACIÓN DE TU APPS SCRIPT
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzTRA1eGB3tEw_cqS4EMt_YncLqeGN80XDKckYBBPede-Z34wmVSJkIQ9l6tle5U1kt/exec";
+
             const form = document.getElementById('registroForm');
             if(!form) return;
+
             form.addEventListener('submit', function(e){
+                e.preventDefault(); // Detiene el envío del formulario tradicional
+
+                // 1. VALIDACIONES LOCALES
                 const email = document.getElementById('registro_email').value.trim();
                 const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
                 const pass = document.getElementById('registro_pass').value;
                 const passConfirm = document.getElementById('registro_pass_confirm').value;
 
                 if(email === '' || emailConfirm === '' || pass === '' || passConfirm === '') {
-                    alert('Por favor, completa los campos de correo y contraseña.');
-                    e.preventDefault(); return;
+                    alert('Por favor, completa los campos obligatorios.'); return;
                 }
-                if(email !== emailConfirm) {alert('Los correos no coinciden.'); e.preventDefault(); return;}
-                if(pass !== passConfirm) {alert('Las contraseñas no coinciden.'); e.preventDefault(); return;}
+                if(email !== emailConfirm) {alert('Los correos no coinciden.'); return;}
+                if(pass !== passConfirm) {alert('Las contraseñas no coinciden.'); return;}
+                
+                // 2. PREPARAR ENVÍO
+                const submitButton = form.querySelector('button');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Registrando...';
+                
+                // 3. ENVÍO AJAX USANDO FETCH
+                const formData = new FormData(form);
+
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    // El Apps Script siempre devuelve un Status 200, incluso si hay un error interno.
+                    // Necesitamos leer la respuesta JSON para saber el resultado.
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.result === 'success') {
+                        alert('🎉 ¡Registro exitoso! Ya puedes iniciar sesión.');
+                        form.reset(); // Limpia el formulario
+                    } else {
+                        // Muestra el error interno de Apps Script (ej: nombre de hoja incorrecto)
+                        alert('❌ Error al guardar datos. Revisa la consola para más detalles. Mensaje: ' + (data.message || 'Error desconocido.'));
+                        console.error('Apps Script Error:', data);
+                    }
+                })
+                .catch(error => {
+                    // Maneja errores de red
+                    alert('🚨 Error de conexión. Revisa si la URL de tu App Script está correcta y desplegada.');
+                    console.error('Error de Fetch/Red:', error);
+                })
+                .finally(() => {
+                    // Restablece el botón sin importar el resultado
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Registrar';
+                });
             });
         })();
     </script>
 
-</body>
+</body> 
 </html>
