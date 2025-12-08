@@ -377,18 +377,17 @@ function eliminar(i){
             return;
         }
 
-        if (email !== emailConfirm) {
-            alert('Los correos no coinciden.');
-            e.preventDefault();
-            return;
-        }
+     if (email !== emailConfirm) {
+    alert('Los correos no coinciden.');
+    e.preventDefault();
+    return;
+}
 
-        if (pass !== passConfirm) {
-            alert('Las contraseñas no coinciden.');
-            e.preventDefault();
-            return;
-        }
-
+if (pass !== passConfirm) {
+    alert('Las contraseñas no coinciden.');
+    e.preventDefault();
+    return;
+}
         
     });
 })();
