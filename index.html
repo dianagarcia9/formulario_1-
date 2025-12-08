@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Seoul Elan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
 <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Lexend+Giga&display=swap" rel="stylesheet">
 
@@ -153,6 +153,7 @@ footer {
     padding: 20px;
 }
 </style>
+
 </head>
 <body>
 
@@ -205,29 +206,77 @@ footer {
 
 <section id="registro">
     <h1>Registro</h1>
-    <form onsubmit="event.preventDefault(); alert('Registro exitoso');">
-        <input type="text" placeholder="Nombre(s)">
-        <input type="text" placeholder="Apellido paterno">
-        <input type="text" placeholder="Apellido materno">
-        <input type="text" placeholder="Pronombre/s">
-        <label>Fecha de nacimiento</label>
-        <input type="date">
-        <input type="email" placeholder="Correo electrónico">
-        <input type="email" placeholder="Confirmar correo">
-        <input type="password" placeholder="Contraseña">
-        <input type="password" placeholder="Confirmar contraseña">
-        <div class="checkbox-container"><input type="checkbox"><label>Deseo recibir promociones</label></div>
-        <div class="checkbox-container"><input type="checkbox"><label>Acepto términos y condiciones</label></div>
-        <div class="checkbox-container"><input type="checkbox"><label>Acepto políticas de privacidad</label></div>
+
+  
+    <form method="POST" action="https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec">
+
+        <div>
+            <label for="registro_nombre">Nombre(s):</label>
+            <input type="text" id="registro_nombre" name="usuario_nombre" placeholder="Nombre(s)" required>
+        </div>
+
+        <div>
+            <label for="registro_apP">Apellido paterno:</label>
+            <input type="text" id="registro_apP" name="apellido_paterno" placeholder="Apellido paterno" required>
+        </div>
+
+        <div>
+            <label for="registro_apM">Apellido materno:</label>
+            <input type="text" id="registro_apM" name="apellido_materno" placeholder="Apellido materno">
+        </div>
+
+        <div>
+            <label for="registro_pronombre">Pronombre/s:</label>
+            <input type="text" id="registro_pronombre" name="pronombres" placeholder="Pronombre/s">
+        </div>
+
+        <div>
+            <label for="registro_fecha">Fecha de nacimiento</label>
+            <input type="date" id="registro_fecha" name="fecha_nacimiento">
+        </div>
+
+        <div>
+            <label for="registro_email">Correo electrónico:</label>
+            <input type="email" id="registro_email" name="usuario_email" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div>
+            <label for="registro_email_confirm">Confirmar correo:</label>
+            <input type="email" id="registro_email_confirm" name="confirmar_email" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div>
+            <label for="registro_pass">Contraseña:</label>
+            <input type="password" id="registro_pass" name="usuario_pass" placeholder="********" required>
+        </div>
+
+        <div>
+            <label for="registro_pass_confirm">Confirmar contraseña:</label>
+            <input type="password" id="registro_pass_confirm" name="confirmar_pass" placeholder="********" required>
+        </div>
+
+        <div class="checkbox-container"><input type="checkbox" id="registro_promo" name="recibir_promociones"><label for="registro_promo">Deseo recibir promociones</label></div>
+        <div class="checkbox-container"><input type="checkbox" id="registro_terminos" name="acepta_terminos" required><label for="registro_terminos">Acepto términos y condiciones</label></div>
+        <div class="checkbox-container"><input type="checkbox" id="registro_priv" name="acepta_privacidad" required><label for="registro_priv">Acepto políticas de privacidad</label></div>
+
         <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
     </form>
 </section>
 
 <section id="login">
     <h1>Iniciar sesión</h1>
-    <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');">
-        <input type="email" placeholder="Correo electrónico">
-        <input type="password" placeholder="Contraseña">
+    
+    <form onsubmit="event.preventDefault(); alert('Inicio de sesión exitoso');" action="/procesar-login" method="POST">
+        <div>
+            <label for="login_email">Correo electrónico:</label>
+            <input type="email" id="login_email" name="usuario_email" placeholder="Correo electrónico" required>
+        </div>
+
+        <div>
+            <label for="login_pass">Contraseña:</label>
+            <input type="password" id="login_pass" name="usuario_pass" placeholder="Contraseña" required>
+        </div>
+
         <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Ingresar</button>
     </form>
 </section>
@@ -241,18 +290,19 @@ footer {
 
 <section id="pedido">
     <h1>Continuar Pedido</h1>
-    <form onsubmit="event.preventDefault(); show('final');">
-        <label>Fecha de entrega</label>
-        <input type="date">
-        <label>Hora</label>
-        <input type="time">
-        <label>Domicilio Completo</label>
-        <input type="text">
-        <label>Entre qué calles</label>
-        <input type="text">
-        <label>Instrucciones o comentarios</label>
-        <textarea></textarea>
-        <div class="checkbox-container"><input type="checkbox"><label>Confirmo que la información es correcta</label></div>
+   
+    <form onsubmit="event.preventDefault(); show('final');" action="/procesar-pedido" method="POST">
+        <label for="pedido_fecha">Fecha de entrega</label>
+        <input type="date" id="pedido_fecha" name="fecha_entrega" required>
+        <label for="pedido_hora">Hora</label>
+        <input type="time" id="pedido_hora" name="hora_entrega" required>
+        <label for="pedido_domicilio">Domicilio Completo</label>
+        <input type="text" id="pedido_domicilio" name="domicilio" placeholder="Calle, número, colonia, ciudad" required>
+        <label for="pedido_calles">Entre qué calles</label>
+        <input type="text" id="pedido_calles" name="entre_calles" placeholder="Entre calle A y calle B">
+        <label for="pedido_instrucciones">Instrucciones o comentarios</label>
+        <textarea id="pedido_instrucciones" name="instrucciones" rows="4" placeholder="Dejar en recepción, puerta trasera, etc."></textarea>
+        <div class="checkbox-container"><input type="checkbox" id="pedido_confirmo" name="confirmo_informacion" required><label for="pedido_confirmo">Confirmo que la información es correcta</label></div>
         <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Finalizar compra</button>
     </form>
 </section>
@@ -272,14 +322,15 @@ footer {
 		)
 		
 		redirect:"follow",
-			method:"POST",
-				body:"FormDataString",
-					headers:{
-						"Content-Type": "Text/Plain;charset=utf-8"
-					}
+		method:"POST",
+		body:"FormDataString",
+		headers:{
+		"Content-Type": "Text/Plain;charset=utf-8"
+		}
 		
 	
 	</script>
+
 
 <script>
 let carrito = [];
@@ -317,6 +368,43 @@ function eliminar(i){
     document.getElementById('contador').textContent = carrito.length;
     renderCarrito();
 }
+</script>
+
+<!-- Validación de registro: correos y contraseñas -->
+<script>
+(function(){
+    const form = document.getElementById('registroForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e){
+        // Obtener valores
+        const email = document.getElementById('registro_email').value.trim();
+        const emailConfirm = document.getElementById('registro_email_confirm').value.trim();
+        const pass = document.getElementById('registro_pass').value;
+        const passConfirm = document.getElementById('registro_pass_confirm').value;
+
+        // Validaciones básicas
+        if (email === '' || emailConfirm === '' || pass === '' || passConfirm === '') {
+            alert('Por favor, completa los campos de correo y contraseña.');
+            e.preventDefault();
+            return;
+        }
+
+        if (email !== emailConfirm) {
+            alert('Los correos no coinciden.');
+            e.preventDefault();
+            return;
+        }
+
+        if (pass !== passConfirm) {
+            alert('Las contraseñas no coinciden.');
+            e.preventDefault();
+            return;
+        }
+
+        
+    });
+})();
 </script>
 
 </body>
