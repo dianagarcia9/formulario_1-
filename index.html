@@ -204,31 +204,31 @@ footer {
     </div>
 </section>
 
-<section id="registro">
+    <section id="registro">
     <h1>Registro</h1>
 
-  
-    <form method="POST" action="https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec">
-
+    <form id="registroForm" method="POST" action="https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec">
+        
         <div>
             <label for="registro_nombre">Nombre(s):</label>
-            <input type="text" id="registro_nombre" name="usuario_nombre" placeholder="Nombre(s)" required>
+            <input type="text" id="registro_nombre" name="usuario_nombre" required>
         </div>
 
         <div>
-            <label for="registro_apP">Apellido paterno:</label>
-            <input type="text" id="registro_apP" name="apellido_paterno" placeholder="Apellido paterno" required>
+            <label>Apellido paterno:</label>
+            <input type="text" id="registro_apP" name="apellido_paterno" required>
         </div>
 
         <div>
-            <label for="registro_apM">Apellido materno:</label>
-            <input type="text" id="registro_apM" name="apellido_materno" placeholder="Apellido materno">
+            <label>Apellido materno:</label>
+            <input type="text" id="registro_apM" name="apellido_materno">
         </div>
 
         <div>
-            <label for="registro_pronombre">Pronombre/s:</label>
-            <input type="text" id="registro_pronombre" name="pronombres" placeholder="Pronombre/s">
+            <label>Pronombre/s:</label>
+            <input type="text" id="registro_pronombre" name="pronombres">
         </div>
+      
 
         <div>
             <label for="registro_fecha">Fecha de nacimiento</label>
@@ -259,7 +259,9 @@ footer {
         <div class="checkbox-container"><input type="checkbox" id="registro_terminos" name="acepta_terminos" required><label for="registro_terminos">Acepto términos y condiciones</label></div>
         <div class="checkbox-container"><input type="checkbox" id="registro_priv" name="acepta_privacidad" required><label for="registro_priv">Acepto políticas de privacidad</label></div>
 
-        <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">Registrar</button>
+       <button style="background:#ff74bc;color:white;padding:12px 20px;border:none;border-radius:15px;">
+            Registrar
+        </button>
     </form>
 </section>
 
@@ -315,9 +317,6 @@ footer {
 <footer>
     © 2025 Seoul Elan. Todos los derechos reservados.
 </footer>
-
-<form id="registroForm" method="POST" action="https://script.google.com/macros/s/AKfycby_eeDvRkbT6fHcaFJwgRsZl-bBeaFdChhnfv4b2lmcmcaMQTvpA1vkm5dgvZDCTYWU/exec">
-
 
 
 <script>
